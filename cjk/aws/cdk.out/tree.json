@@ -1,0 +1,469 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "AutoTagResourceStack": {
+        "id": "AutoTagResourceStack",
+        "path": "AutoTagResourceStack",
+        "children": {
+          "tags": {
+            "id": "tags",
+            "path": "AutoTagResourceStack/tags",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.155.0"
+            }
+          },
+          "identityRecording": {
+            "id": "identityRecording",
+            "path": "AutoTagResourceStack/identityRecording",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.155.0"
+            }
+          },
+          "lambda_role": {
+            "id": "lambda_role",
+            "path": "AutoTagResourceStack/lambda_role",
+            "children": {
+              "Importlambda_role": {
+                "id": "Importlambda_role",
+                "path": "AutoTagResourceStack/lambda_role/Importlambda_role",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.155.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "AutoTagResourceStack/lambda_role/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "lambda.amazonaws.com"
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "roleName": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "resource-tagging-role-",
+                          {
+                            "Ref": "AWS::Region"
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                  "version": "2.155.0"
+                }
+              },
+              "DefaultPolicy": {
+                "id": "DefaultPolicy",
+                "path": "AutoTagResourceStack/lambda_role/DefaultPolicy",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "AutoTagResourceStack/lambda_role/DefaultPolicy/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                      "aws:cdk:cloudformation:props": {
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": [
+                                "GameLift:TagResource",
+                                "cloudformation:DescribeStacks",
+                                "cloudformation:ListStackResources",
+                                "dms:AddTagsToResource",
+                                "dms:DescribeReplicationInstances",
+                                "docdb:AddTagsToResource",
+                                "docdb:ListTagsForResource",
+                                "docdb:RemoveTagsFromResource",
+                                "ds:*",
+                                "dynamodb:DescribeTable",
+                                "dynamodb:TagResource",
+                                "ec2:CreateTags",
+                                "ec2:DescribeInternetGateways",
+                                "ec2:DescribeNatGateways",
+                                "ec2:DescribeVolumes",
+                                "eks:DescribeCluster",
+                                "eks:DescribeNodegroup",
+                                "eks:TagResource",
+                                "elasticache:*",
+                                "elasticache:AddTagsToResource",
+                                "elasticache:DescribeCacheClusters",
+                                "elasticache:DescribeReplicationGroups",
+                                "elasticfilesystem:CreateTags",
+                                "elasticfilesystem:DescribeTags",
+                                "elasticfilesystem:TagResource",
+                                "elasticloadbalancing:AddTags",
+                                "es:AddTags",
+                                "kafka-cluster:Describe*",
+                                "kafka:List*",
+                                "kafka:TagResource",
+                                "kafka:UntagResource",
+                                "kms:ListResourceTags",
+                                "kms:TagResource",
+                                "lambda:ListTags",
+                                "lambda:TagResource",
+                                "rds:AddTagsToResource",
+                                "rds:DescribeDBInstances",
+                                "resource-groups:*",
+                                "route53:ListTagsForResource",
+                                "route53:TagResource",
+                                "route53:UntagResource",
+                                "route53resolver:TagResource",
+                                "s3:GetBucketTagging",
+                                "s3:PutBucketTagging",
+                                "sns:TagResource",
+                                "sqs:ListQueueTags",
+                                "sqs:TagQueue",
+                                "tag:TagResources",
+                                "tag:UntagResources",
+                                "tag:getResources",
+                                "tag:getTagKeys",
+                                "tag:getTagValues",
+                                "workspaces:*",
+                                "workspaces:DescribeTags",
+                                "workspaces:DescribeWorkspaces",
+                                "workspaces:TagResource",
+                                "workspaces:UntagResource"
+                              ],
+                              "Effect": "Allow",
+                              "Resource": "*"
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "policyName": "lambdaroleDefaultPolicyCADF8B22",
+                        "roles": [
+                          {
+                            "Ref": "lambdarole3F9471F6"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                      "version": "2.155.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Policy",
+                  "version": "2.155.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iam.Role",
+              "version": "2.155.0"
+            }
+          },
+          "resource_tagging_automation_function": {
+            "id": "resource_tagging_automation_function",
+            "path": "AutoTagResourceStack/resource_tagging_automation_function",
+            "children": {
+              "Code": {
+                "id": "Code",
+                "path": "AutoTagResourceStack/resource_tagging_automation_function/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "AutoTagResourceStack/resource_tagging_automation_function/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.155.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "AutoTagResourceStack/resource_tagging_automation_function/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.155.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.155.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "AutoTagResourceStack/resource_tagging_automation_function/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": "cdk-hnb659fds-assets-926095812775-ap-southeast-7",
+                      "s3Key": "adff697392da6954117d5d60be0c3a1d948b211b2012d06e02c58a7456415b8e.zip"
+                    },
+                    "environment": {
+                      "variables": {
+                        "tags": {
+                          "Ref": "tags"
+                        },
+                        "identityRecording": {
+                          "Ref": "identityRecording"
+                        }
+                      }
+                    },
+                    "functionName": "resource-tagging-automation-function",
+                    "handler": "lambda-handler.main",
+                    "memorySize": 128,
+                    "role": {
+                      "Fn::GetAtt": [
+                        "lambdarole3F9471F6",
+                        "Arn"
+                      ]
+                    },
+                    "runtime": "python3.10",
+                    "timeout": 600
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.155.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.155.0"
+            }
+          },
+          "resource-tagging-automation-rule": {
+            "id": "resource-tagging-automation-rule",
+            "path": "AutoTagResourceStack/resource-tagging-automation-rule",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "AutoTagResourceStack/resource-tagging-automation-rule/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Events::Rule",
+                  "aws:cdk:cloudformation:props": {
+                    "eventPattern": {
+                      "detail": {
+                        "eventSource": [
+                          "ec2.amazonaws.com",
+                          "elasticloadbalancing.amazonaws.com",
+                          "s3.amazonaws.com",
+                          "rds.amazonaws.com",
+                          "lambda.amazonaws.com",
+                          "dynamodb.amazonaws.com",
+                          "elasticfilesystem.amazonaws.com",
+                          "es.amazonaws.com",
+                          "sqs.amazonaws.com",
+                          "sns.amazonaws.com",
+                          "kms.amazonaws.com",
+                          "dms.amazonaws.com",
+                          "kafka.amazonaws.com",
+                          "route53.amazonaws.com",
+                          "workspaces.amazonaws.com",
+                          "elasticache.amazonaws.com",
+                          "eks.amazonaws.com"
+                        ],
+                        "eventName": [
+                          "RunInstances",
+                          "CreateFunction20150331",
+                          "CreateBucket",
+                          "CreateDBInstance",
+                          "CreateTable",
+                          "CreateVolume",
+                          "CreateLoadBalancer",
+                          "CreateMountTarget",
+                          "CreateDomain",
+                          "CreateQueue",
+                          "CreateTopic",
+                          "CreateKey",
+                          "CreateReplicationGroup",
+                          "CreateCacheCluster",
+                          "ModifyReplicationGroupShardConfiguration",
+                          "CreateFleet",
+                          "CreateDirectoryUserForConsole",
+                          "CreateVpc",
+                          "CreateRoute",
+                          "CreateHostedZone",
+                          "CreateInternetGateway",
+                          "CreateNatGateway",
+                          "AllocateAddress",
+                          "CreateVpcEndpoint",
+                          "CreateTransitGateway",
+                          "CreateReplicationInstance",
+                          "CreateCluster",
+                          "CreateClusterV2",
+                          "CreateServerlessKafkaCluster",
+                          "UpdateServerlessKafkaCluster",
+                          "CreateTags",
+                          "CreateServerlessCluster",
+                          "ModifyCluster",
+                          "DeregisterWorkspaceDirectory",
+                          "CreateDirectory",
+                          "CreateWorkspaces",
+                          "ChangeResourceRecordSets",
+                          "CreateServerlessCache",
+                          "CreateCacheCluster",
+                          "CreateReplicationGroup",
+                          "CopyServerlessCacheSnapshot",
+                          "CopySnapshot",
+                          "CreateCacheParameterGroup",
+                          "CreateCacheSecurityGroup",
+                          "CreateCacheSubnetGroup",
+                          "CreateServerlessCacheSnapshot",
+                          "CreateSnapshot",
+                          "CreateUserGroup",
+                          "CreateUser",
+                          "PurchaseReservedCacheNodesOffering",
+                          "CreateRecordSet",
+                          "CreateInboundEndpoint",
+                          "CreateHostedZone",
+                          "UpdateCluster",
+                          "CreateStream",
+                          "UpdateStream",
+                          "CreateWorkspace",
+                          "CreateVpcPeeringConnection",
+                          "CreateTags",
+                          "CreateCacheParameterGroup",
+                          "CreateNetworkInterface"
+                        ]
+                      },
+                      "detail-type": [
+                        "AWS API Call via CloudTrail"
+                      ],
+                      "source": [
+                        "aws.ec2",
+                        "aws.elasticloadbalancing",
+                        "aws.rds",
+                        "aws.lambda",
+                        "aws.s3",
+                        "aws.dynamodb",
+                        "aws.elasticfilesystem",
+                        "aws.es",
+                        "aws.sqs",
+                        "aws.sns",
+                        "aws.kms",
+                        "aws.dms",
+                        "aws.kafka",
+                        "aws.route53",
+                        "aws.workspaces",
+                        "aws.elasticache",
+                        "aws.eks"
+                      ]
+                    },
+                    "state": "ENABLED",
+                    "targets": [
+                      {
+                        "id": "Target0",
+                        "arn": {
+                          "Fn::GetAtt": [
+                            "resourcetaggingautomationfunction14098B44",
+                            "Arn"
+                          ]
+                        },
+                        "retryPolicy": {
+                          "maximumRetryAttempts": 2
+                        }
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_events.CfnRule",
+                  "version": "2.155.0"
+                }
+              },
+              "AllowEventRuleAutoTagResourceStackresourcetaggingautomationfunctionEF666F1D": {
+                "id": "AllowEventRuleAutoTagResourceStackresourcetaggingautomationfunctionEF666F1D",
+                "path": "AutoTagResourceStack/resource-tagging-automation-rule/AllowEventRuleAutoTagResourceStackresourcetaggingautomationfunctionEF666F1D",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                  "aws:cdk:cloudformation:props": {
+                    "action": "lambda:InvokeFunction",
+                    "functionName": {
+                      "Fn::GetAtt": [
+                        "resourcetaggingautomationfunction14098B44",
+                        "Arn"
+                      ]
+                    },
+                    "principal": "events.amazonaws.com",
+                    "sourceArn": {
+                      "Fn::GetAtt": [
+                        "resourcetaggingautomationrule320D34CC",
+                        "Arn"
+                      ]
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                  "version": "2.155.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_events.Rule",
+              "version": "2.155.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "AutoTagResourceStack/CDKMetadata",
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.4.2"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "AutoTagResourceStack/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.155.0"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "AutoTagResourceStack/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.155.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.155.0"
+        }
+      },
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.4.2"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.155.0"
+    }
+  }
+}

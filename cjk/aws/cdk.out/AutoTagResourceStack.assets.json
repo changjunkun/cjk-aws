@@ -1,0 +1,34 @@
+{
+  "version": "36.3.0",
+  "files": {
+    "adff697392da6954117d5d60be0c3a1d948b211b2012d06e02c58a7456415b8e": {
+      "source": {
+        "path": "asset.adff697392da6954117d5d60be0c3a1d948b211b2012d06e02c58a7456415b8e",
+        "packaging": "zip"
+      },
+      "destinations": {
+        "926095812775-ap-southeast-7": {
+          "bucketName": "cdk-hnb659fds-assets-926095812775-ap-southeast-7",
+          "objectKey": "adff697392da6954117d5d60be0c3a1d948b211b2012d06e02c58a7456415b8e.zip",
+          "region": "ap-southeast-7",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::926095812775:role/cdk-hnb659fds-file-publishing-role-926095812775-ap-southeast-7"
+        }
+      }
+    },
+    "e697b3411b05d5aa19e05a84550cf337384e8edfc19729f35cb4f1388b658cc5": {
+      "source": {
+        "path": "AutoTagResourceStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "926095812775-ap-southeast-7": {
+          "bucketName": "cdk-hnb659fds-assets-926095812775-ap-southeast-7",
+          "objectKey": "e697b3411b05d5aa19e05a84550cf337384e8edfc19729f35cb4f1388b658cc5.json",
+          "region": "ap-southeast-7",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::926095812775:role/cdk-hnb659fds-file-publishing-role-926095812775-ap-southeast-7"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

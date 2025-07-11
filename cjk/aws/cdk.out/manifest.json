@@ -1,0 +1,101 @@
+{
+  "version": "36.3.0",
+  "artifacts": {
+    "AutoTagResourceStack.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "AutoTagResourceStack.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "AutoTagResourceStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://926095812775/ap-southeast-7",
+      "properties": {
+        "templateFile": "AutoTagResourceStack.template.json",
+        "terminationProtection": false,
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::926095812775:role/cdk-hnb659fds-deploy-role-926095812775-ap-southeast-7",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::926095812775:role/cdk-hnb659fds-cfn-exec-role-926095812775-ap-southeast-7",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-926095812775-ap-southeast-7/e697b3411b05d5aa19e05a84550cf337384e8edfc19729f35cb4f1388b658cc5.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "AutoTagResourceStack.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::926095812775:role/cdk-hnb659fds-lookup-role-926095812775-ap-southeast-7",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "AutoTagResourceStack.assets"
+      ],
+      "metadata": {
+        "/AutoTagResourceStack/tags": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "tags"
+          }
+        ],
+        "/AutoTagResourceStack/identityRecording": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "identityRecording"
+          }
+        ],
+        "/AutoTagResourceStack/lambda_role/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "lambdarole3F9471F6"
+          }
+        ],
+        "/AutoTagResourceStack/lambda_role/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "lambdaroleDefaultPolicyCADF8B22"
+          }
+        ],
+        "/AutoTagResourceStack/resource_tagging_automation_function/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "resourcetaggingautomationfunction14098B44"
+          }
+        ],
+        "/AutoTagResourceStack/resource-tagging-automation-rule/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "resourcetaggingautomationrule320D34CC"
+          }
+        ],
+        "/AutoTagResourceStack/resource-tagging-automation-rule/AllowEventRuleAutoTagResourceStackresourcetaggingautomationfunctionEF666F1D": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "resourcetaggingautomationruleAllowEventRuleAutoTagResourceStackresourcetaggingautomationfunctionEF666F1D7148A238"
+          }
+        ],
+        "/AutoTagResourceStack/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/AutoTagResourceStack/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "AutoTagResourceStack"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}
